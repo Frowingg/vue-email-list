@@ -5,15 +5,17 @@ var app = new Vue(
             randomMail: null,
         },
         methods: {
-            getRandomMailFromApi() {
-                axios.get('https://flynn.boolean.careers/exercises/api/random/mail')
-                .then((response) => {
+            getRandomMailFromApiTenTimes() {
+                for(i=0; i <= 10; i++) {
+                    axios.get('https://flynn.boolean.careers/exercises/api/random/mail')
+                    .then((response) => {
                     this.randomMail = response.data.response;
-                });
-            }
+                    })
+                }
+            },
         },
         mounted() {
-            this.getRandomMailFromApi();
+            this.getRandomMailFromApiTenTimes();
         }
     }
 );
